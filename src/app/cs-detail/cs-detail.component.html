@@ -1,12 +1,11 @@
 <div *ngIf="company">
-
   <h2>{{company.name | uppercase}} Details</h2>
-  <div><span>name: </span>{{company.name}}</div>
+  <div><span>id: </span>{{company.id}}</div>
   <div>
     <label>
-      carbon credit:
-      <input [(ngModel)]="company.carboncredit" placeholder="0-10" />
+      name:
+      <input [(ngModel)]="company.name" placeholder="name" />
     </label>
   </div>
-
+  <button (click)="goBack()">go back</button>
 </div>

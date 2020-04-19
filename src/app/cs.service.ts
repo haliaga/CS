@@ -15,4 +15,8 @@ export class CsService {
     this.msgService.add('CsService: fetched companies');
     return of(COMPANIES);
   }
+  getCompany(id: number): Observable<Company> {
+    this.msgService.add('CsService: fetched company id=$(id)');
+    return of(COMPANIES.find(company => company.id === id));
+  }
 }

@@ -1,17 +1,11 @@
-<div>
+<h2>Companies</h2>
+<ul class="companies">
+  <li *ngFor="let company of companies">
+    <a routerLink="/detail/{{company.id}}">
+      <span class="badge">{{company.id}}</span> {{company.name}}
+    </a>
+  </li>
+</ul>
 
-  <h2>Companies</h2>
-  <ul class="companies">
-    <li *ngFor="let company of companies"
-        [class.selected]="company == selectedCompany"
-        (click)="onSelect(company)">
-      <span class="badge">{{company.carboncredit}}</span> {{company.name}} 
-    </li>
-  </ul>
-
-<app-cs-detail [company]="selectedCompany"></app-cs-detail>
-
-
-</div>
 
 
