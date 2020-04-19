@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Company } from '../Company';
 import { CsService } from '../cs.service';
+import { MsgService } from '../msg.service'
 
 @Component({
   selector: 'app-companies',
@@ -13,7 +14,7 @@ export class CompaniesComponent implements OnInit {
   companies : Company[];
   selectedCompany: Company;
 
-  constructor(private csService: CsService) { }
+  constructor(private csService: CsService, private msgService: MsgService) { }
 
   ngOnInit() {
     this.getCompanies();
@@ -21,6 +22,7 @@ export class CompaniesComponent implements OnInit {
 
   onSelect(company: Company): void {
     this.selectedCompany = company;
+    this.msgService.add('MsgService: selected company name = '+company.name+' carbon credits: '+company.carboncredit);
   }
 
   getCompanies(): void {
