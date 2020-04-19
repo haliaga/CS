@@ -24,6 +24,7 @@ export class CompaniesComponent implements OnInit {
   }
 
   getCompanies(): void {
-    this.companies = this.csService.getCompanies();
+    this.csService.getCompanies()
+      .subscribe(companies => this.companies = companies);
   }
 }
