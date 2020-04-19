@@ -5,23 +5,12 @@
     <li *ngFor="let company of companies"
         [class.selected]="company === selectedCompany"
         (click)="onSelect(company)">
-      <span class="badge">{{company.id}}</span> {{company.name}}
+      <span class="badge">{{company.carboncredit}}</span> {{company.name}} 
     </li>
   </ul>
 
-  <div *ngIf="selectedCompany">
+<app-cs-detail [company]="selectedCompany"></app-cs-detail>
 
-    <h2>{{selectedCompany.name | uppercase}} Details</h2>
-    <div><span>id: </span>{{selectedCompany.id}}</div>
-    <div><span>carboncredit: </span>{{selectedCompany.carboncredit}}</div>
-    <div>
-      <label>
-        name:
-        <input [(ngModel)]="selectedCompany.name" placeholder="name" />
-      </label>
-    </div>
-
-  </div>
 
 </div>
 
