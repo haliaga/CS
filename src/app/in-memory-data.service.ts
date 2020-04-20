@@ -8,12 +8,13 @@ import { Company } from './Company';
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const companies = [
-      { id: 11, name: 'Philips', carboncredit: 6 },
-      { id: 12, name: 'Aviva', carboncredit: 7 },
-      { id: 13, name: 'Microsoft', carboncredit: 9 },
-      { id: 14, name: 'Sony', carboncredit: 8 },
-      { id: 15, name: 'BNPParibas', carboncredit: 4 },
-      { id: 16, name: 'Adidas', carboncredit: 8 }
+      { id: 11, name: 'Adidas' },
+      { id: 12, name: 'BnpParibas' },
+      { id: 13, name: 'Qantas' },
+      { id: 14, name: 'PWC' },
+      { id: 15, name: 'Crown' },
+      { id: 16, name: 'Sony' },
+      { id: 17, name: 'ANZ' }
     ];
     return { companies };
   }
@@ -22,9 +23,9 @@ export class InMemoryDataService implements InMemoryDbService {
   // If the companies array is empty,
   // the method below returns the initial number (11).
   // if the companies array is not empty, the method below returns the highest
-  // hero id + 1.
-  genId(heroes: Company[]): number {
-    return heroes.length > 0 ? Math.max(...heroes.map(hero => hero.id)) + 1 : 11;
+  // company id + 1.
+  genId(companies: Company[]): number {
+    return companies.length > 0 ? Math.max(...companies.map(hero => hero.id)) + 1 : 11;
   }
 }
 

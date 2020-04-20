@@ -30,4 +30,9 @@ export class CsDetailComponent implements OnInit {
     this.location.back();
   }
 
+  save(): void {
+    this.csService.updateCompany(this.company)
+      .subscribe(() => this.goBack());
+  }
+
 }

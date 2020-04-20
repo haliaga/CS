@@ -20,4 +20,18 @@ export class CompaniesComponent implements OnInit {
     this.csService.getCompanies()
       .subscribe(companies => this.companies = companies);
   }
+
+  add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.csService.addCompany({ name } as Company)
+      .subscribe(company => {
+        this.companies.push(company);
+      });
+  }
+
+  delete(company: Company): void {
+    this.companies = this.companies.filter(h => h !== company);
+    this.csService.deleteCompany(company).subscribe();
+  }
 }
