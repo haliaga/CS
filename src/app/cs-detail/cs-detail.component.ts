@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { CsService } from '../cs.service';
@@ -11,7 +11,7 @@ import { Company } from '../Company';
 })
 
 export class CsDetailComponent implements OnInit {
-  company: Company;
+  @Input() company: Company;
   constructor(
     private route: ActivatedRoute,
     private csService: CsService,
