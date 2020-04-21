@@ -24,7 +24,7 @@ export class CsService {
     return this.http.get<Company[]>(this.companiesUrl)
       .pipe(
         tap(_ => this.log('fetched companies')),
-        catchError(this.handleError<Company[]>('getHeroes', []))
+        catchError(this.handleError<Company[]>('getCompanies', []))
       );
   }
 
@@ -42,11 +42,11 @@ export class CsService {
       );
   }
 
-  /** GET hero by id. Will 404 if id not found */
+  /** GET company by id. Will 404 if id not found */
   getCompany(id: number): Observable<Company> {
     const url = `${this.companiesUrl}/${id}`;
     return this.http.get<Company>(url).pipe(
-      tap(_ => this.log(`fetched hero id=${id}`)),
+      tap(_ => this.log(`fetched company id=${id}`)),
       catchError(this.handleError<Company>(`getCompany id=${id}`))
     );
   }
@@ -54,7 +54,7 @@ export class CsService {
   /* GET companies whose name contains search term */
   searchCompanies(term: string): Observable<Company[]> {
     if (!term.trim()) {
-      // if not search term, return empty hero array.
+      // if not search term, return empty company array.
       return of([]);
     }
     return this.http.get<Company[]>(`${this.companiesUrl}/?name=${term}`).pipe(
@@ -72,7 +72,7 @@ export class CsService {
       catchError(this.handleError<Company>('addCompany'))
     );
   }
-  /** DELETE: delete the hero from the server */
+  /** DELETE: delete the company from the server */
   deleteCompany(company: Company | number): Observable<Company> {
     const id = typeof company === 'number' ? company : company.id;
     const url = `${this.companiesUrl}/${id}`;
@@ -83,7 +83,7 @@ export class CsService {
     );
   }
 
-  /** PUT: update the hero on the server */
+  /** PUT: update the company on the server */
   updateCompany(company: Company): Observable<any> {
     return this.http.put(this.companiesUrl, company, this.httpOptions).pipe(
       tap(_ => this.log(`updated company id=${company.id}`)),
