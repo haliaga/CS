@@ -23,16 +23,17 @@ export class CsDetailComponent implements OnInit {
   }
   getCompany(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.csService.getCompany(id)
-      .subscribe(company => this.company = company);
+    const thisServ_ = this.csService.updateCompany(this.company);
+    thisServ_.subscribe(company => this.company = company);
   }
   goBack(): void {
-    this.location.back();
+    const thisLoc_ = this.location;
+    thisLoc_.back();
   }
 
   save(): void {
-    this.csService.updateCompany(this.company)
-      .subscribe(() => this.goBack());
+    const thisServ_ = this.csService.updateCompany(this.company);
+    thisServ_.subscribe(() => this.goBack());
   }
 
 }

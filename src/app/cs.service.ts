@@ -21,7 +21,8 @@ export class CsService {
   ) { }
 
   getCompanies(): Observable<Company[]> {
-    return this.http.get<Company[]>(this.companiesUrl)
+    const thisHttp_ = this.http.get<Company[]>(this.companiesUrl);
+    return thisHttp_
       .pipe(
         tap(_ => this.log('fetched companies')),
         catchError(this.handleError<Company[]>('getCompanies', []))
@@ -31,7 +32,8 @@ export class CsService {
   /** GET company by id. Return `undefined` when id not found */
   getCompanyNo404<Data>(id: number): Observable<Company> {
     const url = `${this.companiesUrl}/?id=${id}`;
-    return this.http.get<Company[]>(url)
+    const thisHttp_ = this.http.get<Company[]>(url);
+    return thisHttp_
       .pipe(
         map(companies => companies[0]), // returns a {0|1} element array
         tap(c => {
@@ -45,7 +47,8 @@ export class CsService {
   /** GET company by id. Will 404 if id not found */
   getCompany(id: number): Observable<Company> {
     const url = `${this.companiesUrl}/${id}`;
-    return this.http.get<Company>(url).pipe(
+    const thisHttp_ = this.http.get<Company>(url);
+    return thisHttp_.pipe(
       tap(_ => this.log(`fetched company id=${id}`)),
       catchError(this.handleError<Company>(`getCompany id=${id}`))
     );
@@ -57,7 +60,8 @@ export class CsService {
       // if not search term, return empty company array.
       return of([]);
     }
-    return this.http.get<Company[]>(`${this.companiesUrl}/?name=${term}`).pipe(
+    const thisHttp_ = this.http.get<Company[]>(`${this.companiesUrl}/?name=${term}`)
+    return thisHttp_.pipe(  
       tap(x => x.length ?
         this.log(`found companies matching "${term}"`) :
         this.log(`no companies matching "${term}"`)),
@@ -67,7 +71,8 @@ export class CsService {
 
   /** POST: add a new company to the server */
   addCompany(company: Company): Observable<Company> {
-    return this.http.post<Company>(this.companiesUrl, company, this.httpOptions).pipe(
+    const thisHttp_ = this.http.post<Company>(this.companiesUrl, company, this.httpOptions)
+    return thisHttp_.pipe(
       tap((newCompany: Company) => this.log(`added company w/ id=${newCompany.id}`)),
       catchError(this.handleError<Company>('addCompany'))
     );
@@ -76,8 +81,8 @@ export class CsService {
   deleteCompany(company: Company | number): Observable<Company> {
     const id = typeof company === 'number' ? company : company.id;
     const url = `${this.companiesUrl}/${id}`;
-
-    return this.http.delete<Company>(url, this.httpOptions).pipe(
+    const thisHttp_ = this.http.delete<Company>(url, this.httpOptions);
+    return thisHttp_.pipe(
       tap(_ => this.log(`deleted company id=${id}`)),
       catchError(this.handleError<Company>('deleteCompany'))
     );
@@ -85,7 +90,8 @@ export class CsService {
 
   /** PUT: update the company on the server */
   updateCompany(company: Company): Observable<any> {
-    return this.http.put(this.companiesUrl, company, this.httpOptions).pipe(
+    const thisHttp_ = this.http.put(this.companiesUrl, company, this.httpOptions);
+    return thisHttp_.pipe(
       tap(_ => this.log(`updated company id=${company.id}`)),
       catchError(this.handleError<any>('updateCompany'))
     );
