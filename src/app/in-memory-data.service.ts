@@ -9,13 +9,14 @@ export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const CompanyNames = ['Adidas','BNPParibas','Qnatas','PWC','Crown','Sony','ANZ'];
     const Ids = [11,12,13,14,15,16,17];
-    const nows = ["20200101","20200201","20200301","20200401","20200501","20200601",
-                  "20200701","20200801","20200901","20201001","20201101","20201201"];
+    const nows = [20200101,20200201,20200301,20200401,20200501,20200601,
+                  20200701,20200801,20200901,20201001,20201101,20201201];
     let companies= [];
     for (let i = 0; i < Ids.length; ++i) {
       for(let j=0; j<nows.length;++j){
         let data = {} as Company
-        data.id=Ids[i];
+        data.id=Ids[i]*1E12+nows[j];
+        data.shortid=Ids[i];
         data.name=CompanyNames[i];
         data.now=nows[j];
         data.carboncredit = Math.floor(Math.random() * 10) + 1;
@@ -34,7 +35,8 @@ export class InMemoryDataService implements InMemoryDbService {
   // if the companies array is not empty, the method below returns the highest
   // company id + 1.
   genId(companies: Company[]): number {
-    return companies.length > 0 ? Math.max(...companies.map(company => company.id)) + 1 : 11;
+    const id = companies.length > 0 ? Math.max(...companies.map(company => company.id)) + 1 : 11;
+    return id;
   }
 }
 

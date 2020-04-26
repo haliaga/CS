@@ -15,7 +15,7 @@
 <ul class="companies">
   <li *ngFor="let company of companies">
     <a routerLink="/detail/{{company.id}}">
-      <span class="badge">{{company.id}}</span> {{company.name}}
+      <span class="badge">{{company.shortid}}</span> {{company.name}}
     </a>
     <button class="delete" title="delete company"
             (click)="delete(company)">x
