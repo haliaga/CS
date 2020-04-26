@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -14,11 +14,13 @@ import { CsDetailComponent } from './cs-detail/cs-detail.component';
 import { CompaniesComponent } from './companies/companies.component';
 import { CompanySearchComponent } from './company-search/company-search.component';
 import { MsgsComponent } from './msgs/msgs.component';
+import { NowEditorComponent } from './now-editor/now-editor.component';
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
 
@@ -35,7 +37,8 @@ import { MsgsComponent } from './msgs/msgs.component';
     CompaniesComponent,
     CsDetailComponent,
     MsgsComponent,
-    CompanySearchComponent
+    CompanySearchComponent,
+    NowEditorComponent
   ],
   bootstrap: [AppComponent]
 })
