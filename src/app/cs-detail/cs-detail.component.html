@@ -1,6 +1,7 @@
 <div *ngIf="company">
   <h2>{{company.name | uppercase}} Details</h2>
   <div><span>shortid: </span>{{company.shortid}}</div>
+  <div><span>now: </span>{{company.now}}</div>
   <div>
     <label>name:
       <input [(ngModel)]="company.name" placeholder="name" />
