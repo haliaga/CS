@@ -7,7 +7,7 @@ import { Company } from './Company';
 })
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
-    const CompanyNames = ['Adidas','BNPParibas','Qnatas','PWC','Crown','Sony','ANZ'];
+    const CompanyNames = ['Adidas','BNPParibas','Qantas','PWC','Crown','Sony','ANZ'];
     const Ids = [11,12,13,14,15,16,17];
     const nows = [20200101,20200201,20200301,20200401,20200501,20200601,
                   20200701,20200801,20200901,20201001,20201101,20201201];
