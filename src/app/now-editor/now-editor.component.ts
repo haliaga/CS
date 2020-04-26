@@ -13,6 +13,7 @@ export class NowEditorComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.evEmitt.emit(this.now.value)
   }
 
   sendMessage(){
