@@ -9,13 +9,13 @@ export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const CompanyNames = ['Adidas','BNPParibas','Qantas','PWC','Crown','Sony','ANZ'];
     const Ids = [11,12,13,14,15,16,17];
-    const nows = [20200101,20200201,20200301,20200401,20200501,20200601,
-                  20200701,20200801,20200901,20201001,20201101,20201201];
+    const nows = ["20200101","20200201","20200301","20200401","20200501","20200601",
+                  "20200701","20200801","20200901","20201001","20201101","20201201"];
     let companies= [];
     for (let i = 0; i < Ids.length; ++i) {
       for(let j=0; j<nows.length;++j){
         let data = {} as Company
-        data.id=Ids[i]*1E12+nows[j];
+        data.id=Ids[i]*1E12+Number(nows[j]);
         data.shortid=Ids[i];
         data.name=CompanyNames[i];
         data.now=nows[j];

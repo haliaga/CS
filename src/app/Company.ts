@@ -2,7 +2,7 @@
 export interface Company {
   id: number;
   shortid:number;
-  now: number;
+  now: string;
   name: string;
   carboncredit: number;
   electricity:number;
