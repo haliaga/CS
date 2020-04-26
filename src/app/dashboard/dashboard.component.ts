@@ -8,7 +8,7 @@ import { CsService } from '../cs.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  now:string;
+  now:string ="20200101";
   getNowDate($event):void{
     this.now=$event;
   }
@@ -21,7 +21,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getCompanies(): void {
-    this.csService.getCompanies()
+    this.csService.getCompaniesByNowDate(this.now)
       .subscribe(companies => this.companies = companies.slice(1, 5));
   }
 }

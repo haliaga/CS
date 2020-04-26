@@ -28,6 +28,15 @@ export class CsService {
       );
   }
 
+  getCompaniesByNowDate(now:string): Observable<Company[]> {
+    return this.http.get<Company[]>(`${this.companiesUrl}/?now=${now}`)
+      .pipe(
+        tap(_ => this.log('fetched companies')),
+        //tap((rows: Array<Company>) => rows.filter(rows => rows.now == now)),
+        catchError(this.handleError<Company[]>('getCompanies', []))
+      );
+  }
+
   /** GET company by id. Return `undefined` when id not found */
   getCompanyNo404<Data>(id: number): Observable<Company> {
     const url = `${this.companiesUrl}/?id=${id}`;
