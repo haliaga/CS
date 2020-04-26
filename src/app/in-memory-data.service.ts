@@ -25,16 +25,6 @@ export class InMemoryDataService implements InMemoryDbService {
         companies.push(data);
       }
     }
-    /*
-    const companies = [
-      { id: 11, now: "1/1/2020",name: 'Adidas',carboncredit:10,electricity:20,gas:20,paper:10 },
-      { id: 12, now: "1/1/2020",name: 'BnpParibas',carboncredit:9,electricity:21,gas:23,paper:12 },
-      { id: 13, now: "1/1/2020", name: 'Qantas',carboncredit:8,electricity:27,gas:120,paper:100 },
-      { id: 14, now: "1/1/2020", name: 'PWC',carboncredit:3,electricity:5,gas:2,paper:80 },
-      { id: 15, now: "1/1/2020", name: 'Crown',carboncredit:100,electricity:200,gas:120,paper:34 },
-      { id: 16, now: "1/1/2020", name: 'Sony',carboncredit:7,electricity:66,gas:55,paper:99 },
-      { id: 17, now: "1/1/2020", name: 'ANZ',carboncredit:110,electricity:220,gas:123,paper:234 }
-    ];*/
     return { companies };
   }
 
