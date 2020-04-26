@@ -9,15 +9,15 @@ export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const CompanyNames = ['Adidas','BNPParibas','Qnatas','PWC','Crown','Sony','ANZ'];
     const Ids = [11,12,13,14,15,16,17];
-    const nows = ["1/1/2020","2/1/2020","3/1/2020","4/1/2020","5/1/2020","6/1/2020",
-                  "7/1/2020","8/1/2020","9/1/2020","10/1/2020","11/1/2020","12/1/2020"];
+    const nows = ["20200101","20200201","20200301","20200401","20200501","20200601",
+                  "20200701","20200801","20200901","20201001","20201101","20201201"];
     let companies= [];
     for (let i = 0; i < Ids.length; ++i) {
       for(let j=0; j<nows.length;++j){
         let data = {} as Company
         data.id=Ids[i];
         data.name=CompanyNames[i];
-        data.now=new Date(nows[j]);
+        data.now=nows[j];
         data.carboncredit = Math.floor(Math.random() * 10) + 1;
         data.electricity = Math.floor(Math.random() * 10) + 1;
         data.gas = Math.floor(Math.random() * 10) + 1;
