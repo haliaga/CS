@@ -9,6 +9,10 @@ import { CsService } from '../cs.service';
 })
 
 export class CompaniesComponent implements OnInit {
+  now:string;
+  getNowDate($event):void{
+    this.now=$event;
+  }
   companies : Company[];
   constructor(private csService: CsService) { }
 

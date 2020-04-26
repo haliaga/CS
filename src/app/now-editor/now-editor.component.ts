@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Output,EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -8,9 +8,15 @@ import { FormControl } from '@angular/forms';
 })
 export class NowEditorComponent implements OnInit {
   now = new FormControl('20200501');
+  
+  @Output() evEmitt = new EventEmitter<string>();
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  sendMessage(){
+    this.evEmitt.emit(this.now.value);
   }
 
 }

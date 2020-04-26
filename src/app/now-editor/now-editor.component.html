@@ -1,8 +1,8 @@
-<label>
-    Now:
-    <input type="text" [formControl]="now">
-  </label> 
-  <p>
-    Value: {{ now.value }}
-  </p>  
+<div class="notfication is-primary">
+    <label>
+        Now:
+        <input type="text" [formControl]="now">
+    </label> 
+    <button (click)="sendMessage()" class="buttton">Update NowDate </button>
+</div> 
 
