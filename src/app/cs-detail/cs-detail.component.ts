@@ -21,12 +21,12 @@ export class CsDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCompany();
-    let data_:number[]=[1,2,3,4];
-    this.initChart(data_);
+    //let data_:number[]=[1,2,3,4];
+    //this.initChart(data_);
   }
   getCompany(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.csService.getCompany(id).subscribe(company => this.company = company);
+    this.csService.getCompany(id).subscribe(company => {this.company = company; this.initChart(company)});
   }
   goBack(): void {
     this.location.back();
@@ -37,14 +37,14 @@ export class CsDetailComponent implements OnInit {
       .subscribe(() => this.goBack());
   }
 
-  initChart(data_:number[]): void {
+  initChart(company:Company): void {
     var myChart = new Chart("carbonChart", {
       type: 'bar',
       data: {
           labels: ['Carbon Credit', 'Electricity', 'Gas', 'Paper'],
           datasets: [{
               label: 'Carbon parameters',
-              data: data_,
+              data: [company.carboncredit,company.electricity,company.gas,company.paper],
               backgroundColor: [
                   'rgba(255, 99, 132, 0.2)',
                   'rgba(54, 162, 235, 0.2)',

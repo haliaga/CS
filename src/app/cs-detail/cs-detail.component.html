@@ -1,3 +1,7 @@
+<p>Carbon Chart</p>
+<div id="divChart">
+    <canvas id=carbonChart></canvas>
+</div>
 <div *ngIf="company">
   <h2>{{company.name | uppercase}} Details</h2>
   <div><span>shortid: </span>{{company.shortid}}</div>
@@ -29,9 +33,4 @@
   </div>
   <button (click)="goBack()">go back</button>
   <button (click)="save()">save</button>
-</div>
-
-<p>Carbon Chart</p>
-<div id="divChart">
-    <canvas id=carbonChart></canvas>
 </div>
