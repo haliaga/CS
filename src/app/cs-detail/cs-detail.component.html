@@ -1,6 +1,4 @@
 <div *ngIf="company">
-  <app-carbon-chart></app-carbon-chart>
-
   <h2>{{company.name | uppercase}} Details</h2>
   <div><span>shortid: </span>{{company.shortid}}</div>
   <div><span>now: </span>{{company.now}}</div>
@@ -33,3 +31,7 @@
   <button (click)="save()">save</button>
 </div>
 
+<p>Carbon Chart</p>
+<div id="divChart">
+    <canvas id=carbonChart></canvas>
+</div>

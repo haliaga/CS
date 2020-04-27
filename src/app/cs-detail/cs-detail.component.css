@@ -1,4 +1,9 @@
 /* CompanyDetailComponent's private CSS styles */
+#divChart{
+  display: block;
+  width: 400px;
+  height: 200px;
+}
 label {
   display: inline-block;
   width: 3em;

@@ -42,7 +42,6 @@ export class CarbonChartComponent implements OnInit {
           }
       }
   });
-
   }
 
 }

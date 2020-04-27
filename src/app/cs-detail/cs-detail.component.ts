@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { CsService } from '../cs.service';
 import { Company } from '../Company';
+import {Chart} from 'node_modules/chart.js';
 
 @Component({
   selector: 'app-cs-detail',
@@ -20,11 +21,12 @@ export class CsDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCompany();
+    let data_:number[]=[1,2,3,4];
+    this.initChart(data_);
   }
   getCompany(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.csService.getCompany(id)
-      .subscribe(company => this.company = company);
+    this.csService.getCompany(id).subscribe(company => this.company = company);
   }
   goBack(): void {
     this.location.back();
@@ -35,4 +37,38 @@ export class CsDetailComponent implements OnInit {
       .subscribe(() => this.goBack());
   }
 
+  initChart(data_:number[]): void {
+    var myChart = new Chart("carbonChart", {
+      type: 'bar',
+      data: {
+          labels: ['Carbon Credit', 'Electricity', 'Gas', 'Paper'],
+          datasets: [{
+              label: 'Carbon parameters',
+              data: data_,
+              backgroundColor: [
+                  'rgba(255, 99, 132, 0.2)',
+                  'rgba(54, 162, 235, 0.2)',
+                  'rgba(255, 206, 86, 0.2)',
+                  'rgba(255, 159, 64, 0.2)'
+              ],
+              borderColor: [
+                  'rgba(255, 99, 132, 1)',
+                  'rgba(54, 162, 235, 1)',
+                  'rgba(255, 206, 86, 1)',
+                  'rgba(255, 159, 64, 1)'
+              ],
+              borderWidth: 1
+          }]
+      },
+      options: {
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero: true
+                  }
+              }]
+          }
+      }
+  });
+  }
 }
