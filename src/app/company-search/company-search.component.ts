@@ -13,7 +13,10 @@ import { CsService } from '../cs.service';
   styleUrls: ['./company-search.component.css']
 })
 export class CompanySearchComponent implements OnInit {
-
+  now:string ="20200101";
+  getNowDate($event):void{
+    this.now=$event;
+  }
   companies$: Observable<Company[]>;
   private searchTerms = new Subject<string>();
 
@@ -33,8 +36,11 @@ export class CompanySearchComponent implements OnInit {
       distinctUntilChanged(),
 
       // switch to new search observable each time the term changes
-      switchMap((term: string) => this.csService.searchCompanies(term)),
+      switchMap((term: string) => this.csService.searchCompaniesByNowDate(term,this.now)),
     );
+  }
+  receiveNowDate($event){
+    this.now = $event
   }
 }
 

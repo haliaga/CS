@@ -9,7 +9,7 @@ import { CsService } from '../cs.service';
 })
 
 export class CompaniesComponent implements OnInit {
-  now:string;
+  now:string="20200101";
   getNowDate($event):void{
     this.now=$event;
   }
@@ -21,7 +21,7 @@ export class CompaniesComponent implements OnInit {
   }
 
   getCompanies(): void {
-    this.csService.getCompanies()
+    this.csService.getCompaniesByNowDate(this.now)
       .subscribe(companies => this.companies = companies);
   }
 

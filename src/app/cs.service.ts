@@ -61,6 +61,20 @@ export class CsService {
   }
 
   /* GET companies whose name contains search term */
+  searchCompaniesByNowDate(term: string,now:string): Observable<Company[]> {
+    if (!term.trim()) {
+      // if not search term, return empty company array.
+      return of([]);
+    }
+    return this.http.get<Company[]>(`${this.companiesUrl}/?now=${now}`).pipe(
+      tap(x => x.length ?
+        this.log(`found companies matching "${term}"`) :
+        this.log(`no companies matching "${term}"`)),
+      catchError(this.handleError<Company[]>('searchCompanies', []))
+    );
+  }
+
+  /* GET companies whose name contains search term */
   searchCompanies(term: string): Observable<Company[]> {
     if (!term.trim()) {
       // if not search term, return empty company array.
