@@ -41,7 +41,7 @@ export class CsDetailComponent implements OnInit {
       data: {
           labels: ['Carbon Credit', 'Electricity', 'Gas', 'Paper'],
           datasets: [{
-              label: 'Carbon parameters',
+              label: 'Carbon Footprint Parameters',
               data: [company.carboncredit,company.electricity,company.gas,company.paper],
               backgroundColor: [
                   'rgba(255, 99, 132, 0.2)',
