@@ -8,7 +8,7 @@ import { CsService } from '../cs.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  @Input() now:string;
+  @Input() now:string ="20200101";
 
   companies: Company[] = [];
   constructor(private csService:CsService) { }

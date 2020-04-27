@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import {
   debounceTime, distinctUntilChanged, switchMap
@@ -13,7 +13,7 @@ import { CsService } from '../cs.service';
   styleUrls: ['./company-search.component.css']
 })
 export class CompanySearchComponent implements OnInit {
-  @Input() now:string;
+  now:string ="20200101";
 
   companies$: Observable<Company[]>;
   private searchTerms = new Subject<string>();
@@ -36,6 +36,9 @@ export class CompanySearchComponent implements OnInit {
       // switch to new search observable each time the term changes
       switchMap((term: string) => this.csService.searchCompaniesByNowDate(term,this.now)),
     );
+  }
+  receiveNowDate($event){
+    this.now = $event
   }
 }
 
