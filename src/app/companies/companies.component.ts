@@ -9,7 +9,7 @@ import { CsService } from '../cs.service';
 })
 
 export class CompaniesComponent implements OnInit {
-  @Input() now:string="20200101";
+  @Input() now:string;
   companies : Company[];
   constructor(private csService: CsService) { }
 
