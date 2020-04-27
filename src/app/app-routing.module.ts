@@ -6,7 +6,7 @@ import { CsDetailComponent } from './cs-detail/cs-detail.component';
 import { NowEditorComponent} from './now-editor/now-editor.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch:'full' },
+  { path: '', redirectTo: '/noweditor', pathMatch:'full' },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'detail/:id', component: CsDetailComponent },
   { path: 'companies', component: CompaniesComponent },

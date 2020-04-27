@@ -7,8 +7,7 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./now-editor.component.css']
 })
 export class NowEditorComponent implements OnInit {
-  nowForm = new FormControl('20200501');
-  now:string = this.nowForm.value
+  now:string = '20200501';
   
   constructor() { }
 
