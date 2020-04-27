@@ -15,6 +15,7 @@ import { CompaniesComponent } from './companies/companies.component';
 import { CompanySearchComponent } from './company-search/company-search.component';
 import { MsgsComponent } from './msgs/msgs.component';
 import { NowEditorComponent } from './now-editor/now-editor.component';
+import { CarbonChartComponent } from './carbon-chart/carbon-chart.component';
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import { NowEditorComponent } from './now-editor/now-editor.component';
     CsDetailComponent,
     MsgsComponent,
     CompanySearchComponent,
-    NowEditorComponent
+    NowEditorComponent,
+    CarbonChartComponent
   ],
   bootstrap: [AppComponent]
 })
