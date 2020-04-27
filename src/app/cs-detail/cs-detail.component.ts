@@ -21,8 +21,6 @@ export class CsDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCompany();
-    //let data_:number[]=[1,2,3,4];
-    //this.initChart(data_);
   }
   getCompany(): void {
     const id = +this.route.snapshot.paramMap.get('id');
