@@ -1,7 +1,4 @@
 <h3>Top Companies</h3>
-<app-now-editor>
-  (messageEvent)=getNowDate($event)
-</app-now-editor>
 <div class="grid grid-pad"></div>
 <a *ngFor="let company of companies" class="col-1-4"
    routerLink="/detail/{{company.id}}">
