@@ -1,6 +1,7 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { Company } from '../Company';
 import { CsService } from '../cs.service';
+import { NowdateService} from '../nowdate.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,17 +9,17 @@ import { CsService } from '../cs.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  @Input() now:string ="20200101";
-
   companies: Company[] = [];
-  constructor(private csService:CsService) { }
+  nowDate:string;
+  constructor(private csService: CsService,private data:NowdateService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.data.currentNowDate.subscribe(message=>this.nowDate=message)
     this.getCompanies();
   }
 
   getCompanies(): void {
-    this.csService.getCompaniesByNowDate(this.now)
+    this.csService.getCompaniesByNowDate(this.nowDate)
       .subscribe(companies => this.companies = companies.slice(1, 5));
   }
 }

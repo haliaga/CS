@@ -1,0 +1,10 @@
+<div>
+    <label>
+      Now Date:
+      <input #nowDate />
+    </label>
+    <!-- (click) passes input value to updateNowDate() and then clears the input -->
+    <button (click)="updateNowDate(nowDate.value);nowDate.value=''">
+      update nowdate
+    </button>
+  </div>
