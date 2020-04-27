@@ -1,8 +1,5 @@
-<div class="notfication is-primary">
-    <label>
-        Now:
-        <input type="text" [formControl]="now">
-    </label> 
-    <button (click)="sendMessage()" class="buttton">Update NowDate </button>
-</div> 
+<div>
+    <h1>Parent</h1>
+    <app-companies [now]="now"></app-companies>
+</div>
 

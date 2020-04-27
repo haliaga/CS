@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { Company } from '../Company';
 import { CsService } from '../cs.service';
 
@@ -8,10 +8,7 @@ import { CsService } from '../cs.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  now:string ="20200101";
-  getNowDate($event):void{
-    this.now=$event;
-  }
+  @Input() now:string ="20200101";
 
   companies: Company[] = [];
   constructor(private csService:CsService) { }

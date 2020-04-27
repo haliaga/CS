@@ -14,9 +14,7 @@ import { CsService } from '../cs.service';
 })
 export class CompanySearchComponent implements OnInit {
   now:string ="20200101";
-  getNowDate($event):void{
-    this.now=$event;
-  }
+
   companies$: Observable<Company[]>;
   private searchTerms = new Subject<string>();
 
