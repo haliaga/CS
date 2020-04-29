@@ -39,10 +39,10 @@ export class CsDetailComponent implements OnInit {
     var myChart = new Chart("carbonChart", {
       type: 'bar',
       data: {
-          labels: ['Carbon Credit', 'Electricity', 'Gas', 'Paper'],
+          labels: ['Electricity', 'Gas', 'Paper','Petrol','Organic Trash','Flights'],
           datasets: [{
               label: 'Carbon Footprint Parameters',
-              data: [company.carboncredit,company.electricity,company.gas,company.paper],
+              data: [company.electricity,company.gas,company.paper,company.petrol,company.organictrash,company.flights],
               backgroundColor: [
                   'rgba(255, 99, 132, 0.2)',
                   'rgba(54, 162, 235, 0.2)',

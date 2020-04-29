@@ -12,11 +12,6 @@
     </label>
   </div>
   <div>
-    <label>carboncredit:
-      <input [(ngModel)]="company.carboncredit" placeholder="carboncredit" />
-    </label>    
-  </div>
-  <div>
     <label>electricity:
       <input [(ngModel)]="company.electricity" placeholder="electricity" />
     </label>    
@@ -30,6 +25,22 @@
     <label>paper:
       <input [(ngModel)]="company.paper" placeholder="paper" />
     </label>    
+  </div>
+  <div>
+    <label>petrol:
+      <input [(ngModel)]="company.petrol" placeholder="petrol" />
+    </label>    
+    <div>
+      <label>organictrash:
+        <input [(ngModel)]="company.organictrash" placeholder="organictrash" />
+      </label>    
+    </div>
+    <div>
+      <label>flights:
+        <input [(ngModel)]="company.flights" placeholder="flights" />
+      </label>    
+    </div>
+
   </div>
   <button (click)="goBack()">go back</button>
   <button (click)="save()">save</button>

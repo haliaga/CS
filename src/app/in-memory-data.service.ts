@@ -19,10 +19,12 @@ export class InMemoryDataService implements InMemoryDbService {
         data.shortid=Ids[i];
         data.name=CompanyNames[i];
         data.now=nows[j];
-        data.carboncredit = Math.floor(Math.random() * 10) + 1;
         data.electricity = Math.floor(Math.random() * 10) + 1;
         data.gas = Math.floor(Math.random() * 10) + 1;
         data.paper = Math.floor(Math.random() * 10) + 1;
+        data.petrol=  Math.floor(Math.random() * 10) + 1;
+        data.organictrash = Math.floor(Math.random() * 10) + 1;
+        data.flights = Math.floor(Math.random() * 10) + 1; 
         companies.push(data);
       }
     }
