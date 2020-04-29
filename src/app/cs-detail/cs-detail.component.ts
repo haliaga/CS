@@ -12,7 +12,7 @@ import {Chart} from 'node_modules/chart.js';
 })
 
 export class CsDetailComponent implements OnInit {
-  @Input() company: Company;
+  company: Company;
   constructor(
     private route: ActivatedRoute,
     private csService: CsService,
