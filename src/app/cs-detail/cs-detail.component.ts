@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { CsService } from '../cs.service';
 import { Company } from '../Company';
 import {Chart} from 'node_modules/chart.js';
+import { NowdateService} from '../nowdate.service';
 
 @Component({
   selector: 'app-cs-detail',
@@ -13,18 +14,29 @@ import {Chart} from 'node_modules/chart.js';
 
 export class CsDetailComponent implements OnInit {
   company: Company;
+  companies:Company[];
+  nowDate:string;
+
   constructor(
     private route: ActivatedRoute,
     private csService: CsService,
-    private location: Location
+    private location: Location,
+    private data:NowdateService
   ) { }
 
   ngOnInit(): void {
     this.getCompany();
+    this.getCompanies();
   }
+
+  getCompanies(): void {
+    this.csService.getCompaniesByNowDate(this.nowDate)
+      .subscribe(companies => this.companies = companies);
+  }
+
   getCompany(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.csService.getCompany(id).subscribe(company => {this.company = company; this.initChart(company)});
+    this.csService.getCompany(id).subscribe(company => {this.company = company; this.initCarbonChart(company)});
   }
   goBack(): void {
     this.location.back();
@@ -33,10 +45,6 @@ export class CsDetailComponent implements OnInit {
   save(): void {
     this.csService.updateCompany(this.company)
       .subscribe(() => this.goBack());
-  }
-
-  initChart(company:Company): void {
-    this.initCarbonChart(company);
   }
 
   initCarbonChart(company:Company):void{
