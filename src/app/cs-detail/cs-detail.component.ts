@@ -36,6 +36,10 @@ export class CsDetailComponent implements OnInit {
   }
 
   initChart(company:Company): void {
+    this.initCarbonChart(company);
+  }
+
+  initCarbonChart(company:Company):void{
     var myChart = new Chart("carbonChart", {
       type: 'bar',
       data: {
