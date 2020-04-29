@@ -6,7 +6,7 @@ import { NowdateService} from '../nowdate.service';
   styleUrls: ['./nowdate.component.css']
 })
 export class NowdateComponent implements OnInit {
-  nowDate:string="20200101";
+  nowDate:string="20201201";
   constructor(private data:NowdateService) { }
   ngOnInit(): void {
     this.updateNowDate(this.nowDate);

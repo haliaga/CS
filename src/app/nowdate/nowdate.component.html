@@ -2,14 +2,14 @@
     <br>
     <label>
       Now Date:
-      <input #nowDate />
+      <input #now />
     </label>
     <!-- (click) passes input value to updateNowDate() and then clears the input -->
-    <button (click)="updateNowDate(nowDate.value);nowDate.value=''">
+    <button (click)="updateNowDate(now.value);now.value=''">
       update nowdate
     </button>
     <br>
     <br>
-    <div><span>current: </span>20200101</div>
+    <h3>current: {{nowDate}}</h3>
   </div>
 
