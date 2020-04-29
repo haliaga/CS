@@ -37,6 +37,14 @@ export class CsService {
       );
   }
 
+  getHistoricalValuesForCompanyName(name:string): Observable<Company[]> {
+    return this.http.get<Company[]>(`${this.companiesUrl}/?name=${name}`)
+      .pipe(
+        tap(_ => this.log('fetched companies')),
+        catchError(this.handleError<Company[]>('getHistoricalValuesForCompanyName', []))
+      );
+  }
+
   /** GET company by id. Return `undefined` when id not found */
   getCompanyNo404<Data>(id: number): Observable<Company> {
     const url = `${this.companiesUrl}/?id=${id}`;

@@ -13,6 +13,7 @@ import { NowdateService} from '../nowdate.service';
 })
 
 export class CsDetailComponent implements OnInit {
+  gauge:string="electricity";
   company: Company;
   companies:Company[];
   nowDate:string;
@@ -26,17 +27,17 @@ export class CsDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCompany();
-    this.getCompanies();
-  }
-
-  getCompanies(): void {
-    this.csService.getCompaniesByNowDate(this.nowDate)
-      .subscribe(companies => this.companies = companies);
+    this.getCompanies("Qantas");
   }
 
   getCompany(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.csService.getCompany(id).subscribe(company => {this.company = company; this.initCarbonChart(company)});
+  }
+
+  getCompanies(name:string): void {
+    this.csService.getHistoricalValuesForCompanyName(name)
+      .subscribe(companies => {this.companies = companies;this.initHistChart(this.companies,this.gauge)});
   }
   goBack(): void {
     this.location.back();
@@ -47,15 +48,53 @@ export class CsDetailComponent implements OnInit {
       .subscribe(() => this.goBack());
   }
 
-  initCarbonChart(company:Company):void{
-    var myChart = new Chart("carbonChart", {
+  initCarbonChart(company:Company)
+  {
+    const labels_ = ['Electricity', 'Gas', 'Paper','Petrol','Organic Trash','Flights'];
+    const data_ = [company.electricity,company.gas,company.paper,company.petrol,company.organictrash,company.flights];
+    this.initChart("carbonChart","",labels_,data_);
+
+  }
+
+  initHistChart(series:Company[],gauge:string)
+  {
+    const labels_ = [];
+    const data_ = [];
+    for(let i = 0; i< series.length;++i){
+        labels_.push(series[i].now);
+        switch(gauge){
+          case "electricity":
+            data_.push(series[i].electricity);
+            break;
+          case "flights":
+            data_.push(series[i].flights);
+            break;
+          case "gas":
+            data_.push(series[i].gas);
+            break;
+          case "organictrash":
+            data_.push(series[i].organictrash);
+            break;
+          case "paper":
+            data_.push(series[i].paper);
+            break;
+          case "petrol":
+            data_.push(series[i].petrol);
+            break;
+        }
+    }
+    this.initChart("histChart",this.gauge,labels_,data_);
+  }
+
+  initChart(chartName_:string,title_:string,labels_:string[],data_:Number[]):void{
+    var myChart = new Chart(chartName_, {
       type: 'bar',
       data: {
-          labels: ['Electricity', 'Gas', 'Paper','Petrol','Organic Trash','Flights'],
+          labels: labels_,
           datasets: [{
-              label: 'Carbon Footprint Parameters',
-              data: [company.electricity,company.gas,company.paper,company.petrol,company.organictrash,company.flights],
-              backgroundColor: [
+              label: title_,
+              data: data_,
+/*              backgroundColor: [
                   'rgba(255, 99, 132, 0.2)',
                   'rgba(54, 162, 235, 0.2)',
                   'rgba(255, 206, 86, 0.2)',
@@ -70,7 +109,7 @@ export class CsDetailComponent implements OnInit {
                 'rgba(255, 159, 64, 0.2)',
                 'rgba(54, 162, 135, 0.2)',
                 'rgba(77, 142, 235, 0.2)'
-              ],
+              ],*/
               borderWidth: 1
           }]
       },
