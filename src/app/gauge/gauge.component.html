@@ -1,0 +1,15 @@
+<div>
+  <br>
+  <label>
+    Gauge:
+    <input #newGauge />
+  </label>
+  <!-- (click) passes input value to updateGauge() and then clears the input -->
+  <button (click)="updateGauge(newGauge.value);newGauge.value=''">
+    update gauge
+  </button>
+  <br>
+  <br>
+  <h3>current: {{gauge}}</h3>
+</div>
+

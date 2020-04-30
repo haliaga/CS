@@ -15,6 +15,7 @@ import { CompaniesComponent } from './companies/companies.component';
 import { CompanySearchComponent } from './company-search/company-search.component';
 import { MsgsComponent } from './msgs/msgs.component';
 import { NowdateComponent } from './nowdate/nowdate.component';
+import { GaugeComponent } from './gauge/gauge.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { NowdateComponent } from './nowdate/nowdate.component';
     CsDetailComponent,
     MsgsComponent,
     CompanySearchComponent,
-    NowdateComponent
+    NowdateComponent,
+    GaugeComponent
   ],
   bootstrap: [AppComponent]
 })

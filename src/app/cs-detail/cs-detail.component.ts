@@ -3,8 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { CsService } from '../cs.service';
 import { Company } from '../Company';
-import {Chart} from 'node_modules/chart.js';
+import { Chart} from 'node_modules/chart.js';
 import { NowdateService} from '../nowdate.service';
+import { GaugeService } from '../gauge.service';
 
 @Component({
   selector: 'app-cs-detail',
@@ -22,10 +23,13 @@ export class CsDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private csService: CsService,
     private location: Location,
-    private data:NowdateService
+    private dataNowDate: NowdateService,
+    private dataGauge: GaugeService
   ) { }
 
   ngOnInit(): void {
+    this.dataNowDate.currentNowDate.subscribe(message=>this.nowDate=message)
+    this.dataGauge.currentGauge.subscribe(message=>this.gauge=message);
     this.getCompany();
     this.getCompanies("Qantas");
   }
