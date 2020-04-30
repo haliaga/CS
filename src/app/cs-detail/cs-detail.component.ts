@@ -94,7 +94,13 @@ export class CsDetailComponent implements OnInit {
           datasets: [{
               label: title_,
               data: data_,
-/*              backgroundColor: [
+              backgroundColor: [
+                  'rgba(255, 99, 132, 0.2)',
+                  'rgba(54, 162, 235, 0.2)',
+                  'rgba(255, 206, 86, 0.2)',
+                  'rgba(255, 159, 64, 0.2)',
+                  'rgba(54, 162, 135, 0.2)',
+                  'rgba(77, 142, 235, 0.2)',
                   'rgba(255, 99, 132, 0.2)',
                   'rgba(54, 162, 235, 0.2)',
                   'rgba(255, 206, 86, 0.2)',
@@ -108,8 +114,14 @@ export class CsDetailComponent implements OnInit {
                 'rgba(255, 206, 86, 0.2)',
                 'rgba(255, 159, 64, 0.2)',
                 'rgba(54, 162, 135, 0.2)',
+                'rgba(77, 142, 235, 0.2)',
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(54, 162, 135, 0.2)',
                 'rgba(77, 142, 235, 0.2)'
-              ],*/
+              ],
               borderWidth: 1
           }]
       },
