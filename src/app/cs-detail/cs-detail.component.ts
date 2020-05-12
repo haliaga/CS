@@ -14,7 +14,7 @@ import { GaugeService } from '../gauge.service';
 })
 
 export class CsDetailComponent implements OnInit {
-  gauge:string="electricity";
+  gauge:string;
   company: Company;
   companies:Company[];
   nowDate:string;
@@ -31,15 +31,19 @@ export class CsDetailComponent implements OnInit {
     this.dataNowDate.currentNowDate.subscribe(message=>this.nowDate=message)
     this.dataGauge.currentGauge.subscribe(message=>this.gauge=message);
     this.getCompany();
-    this.getCompanies("Qantas");
+    //this.getCompanies();
   }
 
   getCompany(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.csService.getCompany(id).subscribe(company => {this.company = company; this.initCarbonChart(company)});
+    this.csService.getCompany(id).subscribe(company => {
+      this.company = company;
+      this.csService.getHistoricalValuesForCompanyName(company.name)
+      .subscribe(companies => {this.companies = companies;this.initHistChart(this.companies,this.gauge)}); 
+      this.initCarbonChart(company)});
   }
 
-  getCompanies(name:string): void {
+  getCompanies(): void {
     this.csService.getHistoricalValuesForCompanyName(name)
       .subscribe(companies => {this.companies = companies;this.initHistChart(this.companies,this.gauge)});
   }
